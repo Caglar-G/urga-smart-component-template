@@ -13,6 +13,22 @@
     UrgaSmart.getDeviceInfo("")
   })*/
 
+  let error:string = "";
+
+
+  onMount(() => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (id) {
+        // id varsa işlemler yap
+        console.log("id bulundu", id);
+    } else {
+        // id yoksa alternatif bir işlem yap
+        error = "id bulunamadi";
+    }
+  });
+
 
   const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
 
@@ -29,6 +45,11 @@
   </div>
   <h1>Vite + Svelte</h1>
 
+  {#if error != ""}
+    <div>{error}</div>
+  {/if}
+
+  <!--
   <div class="card">
     <Counter />
   </div>
@@ -40,6 +61,7 @@
   <p class="read-the-docs">
     Click on the Vite and Svelte logos to learn more
   </p>
+  -->
 </main>
 
 <style>
