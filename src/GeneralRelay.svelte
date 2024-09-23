@@ -3,7 +3,9 @@
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
 
-  import { Cluster } from "urgasmartlib";
+  import { Cluster, Device } from "urgasmartlib";
+  import type { DeviceInfo } from "urgasmartlib";
+
   import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +16,8 @@
   })*/
 
   let error:string = "";
-
+  let device:Device;
+  let deviceInfo:DeviceInfo|null = null;
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
@@ -23,6 +26,14 @@
     if (id) {
         // id varsa işlemler yap
         console.log("id bulundu", id);
+        device = new Device(id);
+        
+        device.getDeviceInfo((_deviceInfo)=>{
+          deviceInfo = _deviceInfo;
+          console.warn("deviceInfo", deviceInfo);
+          
+        })
+        
     } else {
         // id yoksa alternatif bir işlem yap
         error = "id bulunamadi";
@@ -43,7 +54,9 @@
       <Fa icon={faPowerOff} size="8x" color={switch1.attributes.OnOff === "ON" ? "#55B785" : "#C33175"}/>
     </div>
   </div>
-  <h1>Vite + Svelte</h1>
+  {#if deviceInfo != null}
+    <h1>{deviceInfo.deviceName}</h1>
+  {/if}
 
   {#if error != ""}
     <div>{error}</div>
