@@ -50,7 +50,7 @@
   <div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div on:click={switch1.commands.Toggle} >
+    <div class="m-auto w-fit" on:click={switch1.commands.Toggle} >
       <Fa icon={faPowerOff} size="8x" color={switch1.attributes.OnOff === "ON" ? "#55B785" : "#C33175"}/>
     </div>
   </div>

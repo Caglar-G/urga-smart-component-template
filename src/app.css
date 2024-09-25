@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -35,15 +39,18 @@ h1 {
   line-height: 1.1;
 }
 
+h3 {
+  font-size: 2.2em;
+  line-height: 1.1;
+}
+
 .card {
   padding: 2em;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+  width: 100vw;
 }
 
 button {

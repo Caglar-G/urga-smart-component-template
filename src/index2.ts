@@ -1,8 +1,8 @@
 import './app.css'
-import App from './GeneralDoorStation.svelte'
+import App from './SmartPowerMeter.svelte'
 
 const app = new App({
-  target: document.getElementById('app2')!,
+  target: document.getElementById('app')!,
 })
 
 export default app
