@@ -41,17 +41,17 @@
   });
 
 
-  const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
+  //const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
 
-  let switch1 = spec.ON_OFF("1",(self)=>{ switch1 = self;});
+  //let switch1 = spec.ON_OFF("1",(self)=>{ switch1 = self;}); on:click={/*switch1.commands.Toggle*/} color={/*switch1.attributes.OnOff === "ON" ? "#55B785" : "#C33175"*/}
 </script>
 
 <main>
   <div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="m-auto w-fit" on:click={switch1.commands.Toggle} >
-      <Fa icon={faPowerOff} size="8x" color={switch1.attributes.OnOff === "ON" ? "#55B785" : "#C33175"}/>
+    <div class="m-auto w-fit" >
+      <Fa icon={faPowerOff} size="8x" />
     </div>
   </div>
   {#if deviceInfo != null}
