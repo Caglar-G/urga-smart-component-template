@@ -4,7 +4,7 @@
   import Counter from './lib/Counter.svelte'
 
   import { Cluster, Device } from "urgasmartlib";
-  import type { DeviceInfo } from "urgasmartlib";
+  import type { DeviceInfo, Message } from "urgasmartlib";
 
   import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
@@ -18,7 +18,7 @@
   let error:string = "";
   let device:Device;
   let deviceInfo:DeviceInfo|null = null;
-  let onOffStatus:null|"ON"|"OFF" = null
+  let onOffStatus:string="";
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
@@ -34,8 +34,8 @@
           console.warn("deviceInfo", deviceInfo);
         })
 
-        device.attributeListen("0x0006", 1, "0x01", (value:any) => {
-          onOffStatus = value;
+        device.attributeListen("0x0006", 1, "0x01", (message:Message) => {
+          onOffStatus = message.payloadString;
         });
         
     } else {
@@ -60,6 +60,7 @@
   </div>
   {#if deviceInfo != null}
     <h1>{deviceInfo.deviceName}</h1>
+    <h2>{onOffStatus}</h2>
   {/if}
 
   {#if error != ""}
