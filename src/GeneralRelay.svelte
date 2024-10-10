@@ -18,6 +18,7 @@
   let error:string = "";
   let device:Device;
   let deviceInfo:DeviceInfo|null = null;
+  let onOffStatus:null|"ON"|"OFF" = null
 
   onMount(() => {
     const params = new URLSearchParams(window.location.search);
@@ -31,8 +32,11 @@
         device.getDeviceInfo((_deviceInfo)=>{
           deviceInfo = _deviceInfo;
           console.warn("deviceInfo", deviceInfo);
-          
         })
+
+        device.attributeListen("0x0006", 1, "0x01", (value:any) => {
+          onOffStatus = value;
+        });
         
     } else {
         // id yoksa alternatif bir işlem yap
