@@ -51,7 +51,7 @@
         color = `#55B785`;
         break;
       case "OFF":
-        color = `#C33175`;
+        color = `brown`;
         break;
       default:
         color = `grey`;
