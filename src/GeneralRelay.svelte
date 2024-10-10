@@ -34,7 +34,7 @@
           console.warn("deviceInfo", deviceInfo);
         })
 
-        device.attributeListen("0x0006", 1, "0x01", (message:Message) => {
+        device.attributeListen("0x0006", 0, "0x0000", (message:Message) => {
           onOffStatus = message.payloadString;
         });
         
