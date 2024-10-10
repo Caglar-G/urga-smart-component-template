@@ -44,6 +44,22 @@
     }
   });
 
+  function ColorChange(_status:string){
+    let color = "grey";
+    switch (_status) {
+      case "ON":
+        color = `#55B785`;
+        break;
+      case "OFF":
+        color = `#C33175`;
+        break;
+      default:
+        color = `grey`;
+        break;
+    }
+    return `color:${color};`
+  }
+
 
   //const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
 
@@ -54,18 +70,13 @@
   <div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="m-auto w-fit" >
+    <div class="m-auto w-fit" style="{ColorChange(onOffStatus)}" >
       <Fa icon={faPowerOff} size="8x" />
     </div>
   </div>
   {#if deviceInfo != null}
     <h1>{deviceInfo.deviceName}</h1>
     <h2>{onOffStatus}</h2>
-    {#if onOffStatus != ""}
-      <h2>{onOffStatus}</h2>
-    {:else}
-      <h2>"Bulunmuyor"</h2>
-    {/if}
   {/if}
 
   {#if error != ""}
