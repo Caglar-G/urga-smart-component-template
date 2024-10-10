@@ -61,6 +61,11 @@
   {#if deviceInfo != null}
     <h1>{deviceInfo.deviceName}</h1>
     <h2>{onOffStatus}</h2>
+    {#if onOffStatus != ""}
+      <h2>{onOffStatus}</h2>
+    {:else}
+      <h2>"Bulunmuyor"</h2>
+    {/if}
   {/if}
 
   {#if error != ""}
