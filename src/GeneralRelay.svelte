@@ -60,6 +60,13 @@
     return `color:${color};`
   }
 
+  function ToogleCommand(){
+   
+    device.command("0x0006", 0, "0x02", "" , (message:Message) => {
+      //onOffStatus = message.payloadString;
+      console.log("Gonderildi");
+    });
+  }
 
   //const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
 
@@ -70,7 +77,7 @@
   <div>
       <!-- svelte-ignore a11y-click-events-have-key-events -->
       <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="m-auto w-fit" style="{ColorChange(onOffStatus)}" >
+    <div class="m-auto w-fit" style="{ColorChange(onOffStatus)}" on:click={ToogleCommand}>
       <Fa icon={faPowerOff} size="8x" />
     </div>
   </div>
