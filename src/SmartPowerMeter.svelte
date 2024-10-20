@@ -4,7 +4,7 @@
     import Counter from './lib/Counter.svelte'
   
     import { Cluster, Device } from "urgasmartlib";
-    import type { DeviceInfo } from "urgasmartlib";
+    import type { DeviceInfo, Message } from "urgasmartlib";
   
     import { onMount } from 'svelte';
     import Fa from 'svelte-fa';
@@ -15,6 +15,13 @@
     let error:string = "";
     let device:Device;
     let deviceInfo:DeviceInfo|null = null;
+    let activeCurrent_0:string="";
+    let activeCurrent_1:string="";
+    let activeCurrent_2:string="";
+    let activeCurrent_3:string="";
+    let activeCurrent_4:string="";
+    let activeCurrent_5:string="";
+
 
   
     onMount(() => {
@@ -29,9 +36,28 @@
         device.getDeviceInfo((_deviceInfo)=>{
             deviceInfo = _deviceInfo;
             console.warn("deviceInfo", deviceInfo);
-        
         })
 
+        device.attributeListen("0x0090", 0, "0x0005", (message:Message) => {
+            activeCurrent_0 = message.payloadString;
+        });
+        device.attributeListen("0x0090", 1, "0x0005", (message:Message) => {
+            activeCurrent_1 = message.payloadString;
+        });
+        device.attributeListen("0x0090", 2, "0x0005", (message:Message) => {
+            activeCurrent_2 = message.payloadString;
+        });
+        device.attributeListen("0x0090", 3, "0x0005", (message:Message) => {
+            activeCurrent_3 = message.payloadString;
+        });
+        device.attributeListen("0x0090", 4, "0x0005", (message:Message) => {
+            activeCurrent_4 = message.payloadString;
+        });
+        device.attributeListen("0x0090", 5, "0x0005", (message:Message) => {
+            activeCurrent_5 = message.payloadString;
+        });
+
+        /*
         const spec = new Cluster(id);
   
         let probe1 = spec.Electrical_Measurement("1",(self)=>{ probe1 = self;});
@@ -40,6 +66,7 @@
         let probe4 = spec.Electrical_Measurement("4",(self)=>{ probe4 = self;});
         let probe5 = spec.Electrical_Measurement("5",(self)=>{ probe5 = self;});
         let probe6 = spec.Electrical_Measurement("6",(self)=>{ probe6 = self;});
+        */
 
           
       } else {
@@ -67,21 +94,21 @@
                     <div class="flex flex-col items-start">
                         <div>Probe 1</div>
                         <div>
-                            <span class="valProbe">0.05</span>
+                            <span class="valProbe">{activeCurrent_0}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 3</div>
                         <div>
-                            <span class="valProbe">1</span>
+                            <span class="valProbe">{activeCurrent_1}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 5</div>
                         <div>
-                            <span class="valProbe">0.05</span>
+                            <span class="valProbe">{activeCurrent_2}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
@@ -90,21 +117,21 @@
                     <div class="flex flex-col items-start">
                         <div>Probe 2</div>
                         <div>
-                            <span class="valProbe">2.4</span>
+                            <span class="valProbe">{activeCurrent_3}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 4</div>
                         <div>
-                            <span class="valProbe">0.05</span>
+                            <span class="valProbe">{activeCurrent_4}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 6</div>
                         <div>
-                            <span class="valProbe">0.05</span>
+                            <span class="valProbe">{activeCurrent_5}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
