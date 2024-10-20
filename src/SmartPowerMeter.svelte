@@ -101,14 +101,14 @@
                     <div class="flex flex-col items-start">
                         <div>Probe 3</div>
                         <div>
-                            <span class="valProbe">{activeCurrent_1}</span>
+                            <span class="valProbe">{activeCurrent_2}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 5</div>
                         <div>
-                            <span class="valProbe">{activeCurrent_2}</span>
+                            <span class="valProbe">{activeCurrent_4}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
@@ -117,14 +117,14 @@
                     <div class="flex flex-col items-start">
                         <div>Probe 2</div>
                         <div>
-                            <span class="valProbe">{activeCurrent_3}</span>
+                            <span class="valProbe">{activeCurrent_1}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
                     <div class="flex flex-col items-start">
                         <div>Probe 4</div>
                         <div>
-                            <span class="valProbe">{activeCurrent_4}</span>
+                            <span class="valProbe">{activeCurrent_3}</span>
                             <span class="valProbeUnit">A</span>
                         </div>
                     </div>
