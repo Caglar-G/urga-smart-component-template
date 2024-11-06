@@ -62,7 +62,7 @@
 
   function ToogleCommand(){
    
-    device.command("0x0006", 0, "0x02", "" , (message:Message) => {
+    device.command("0x0006", 0, "Toggle", (message:Message) => {
       //onOffStatus = message.payloadString;
       console.log("Gonderildi");
     });
