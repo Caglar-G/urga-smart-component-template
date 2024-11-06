@@ -30,8 +30,8 @@
         device = new Device(id);
         
         device.getDeviceInfo((_deviceInfo)=>{
-          deviceInfo = _deviceInfo;
           console.warn("deviceInfo", deviceInfo);
+          deviceInfo = _deviceInfo;
         })
 
         device.attributeListen("0x0006", 0, "0x0000", (message:Message) => {
