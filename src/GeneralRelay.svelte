@@ -62,11 +62,11 @@
   }
 
   function ToogleCommand(){
-   /*
+   
     device.command("0x0006", 0, "Toggle", (message:Message) => {
       //onOffStatus = message.payloadString;
       console.log("Gonderildi");
-    });*/
+    });
   }
 
   //const spec = new Cluster("38d83101-e148-4a54-848b-faa5d074e481");
