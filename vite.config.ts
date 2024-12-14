@@ -1,10 +1,21 @@
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   base: './', 
-  plugins: [svelte()],
+  plugins: [
+    svelte(),
+    viteStaticCopy({
+      targets: [
+        {
+          src: './src/settings.json', // Kaynak JSON dosyası
+          dest: './'             // Derleme çıktısındaki hedef dizin
+        }
+      ]
+    })
+  ],
   build: {
     rollupOptions: {
       input: {
