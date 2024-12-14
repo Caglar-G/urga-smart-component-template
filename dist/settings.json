@@ -3,6 +3,7 @@
     "gasBLESelectChar": {
         "label": "Gaz",
         "name": "gasBLESelectChar",
+        "deviceType": "BluetoothBridgeDevices",
         "type": "InputBLESelectChar",
         "value": {
             "serviceUUID": "",
