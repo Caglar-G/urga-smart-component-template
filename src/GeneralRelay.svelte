@@ -37,7 +37,7 @@
 
         device.attributesListenByCluster({
             endpoint: 0,
-            clusterName: "ON/OFF",
+            clusterId: 0x0006,
             attributeName: "OnOff"
         }, (message) => {
           onOffStatus = message.payloadString;
