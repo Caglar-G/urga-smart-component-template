@@ -3,12 +3,11 @@
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
 
-  import { Cluster, Device } from "urgasmartlib";
-  import type { DeviceInfo, Message } from "urgasmartlib";
 
   import { onMount } from 'svelte';
 	import Fa from 'svelte-fa';
 	import { faPowerOff } from '@fortawesome/free-solid-svg-icons';
+  import { Device, type DeviceInfo, type Message } from '@urga-smart/ui-bridge';
 
   /*
   onMount(()=>{
@@ -34,10 +33,21 @@
           deviceInfo = _deviceInfo;
         })
 
-        device.attributeListen("0x0006", 0, "0x0000", (message:Message) => {
+        
+
+        device.attributesListenByCluster({
+            endpoint: 0,
+            clusterName: "ON/OFF",
+            attributeName: "OnOff"
+        }, (message) => {
           onOffStatus = message.payloadString;
           console.log("attributeChangeVal", onOffStatus)
         });
+
+        // device.attributeListen("0x0006", 0, "0x0000", (message:Message) => {
+        //   onOffStatus = message.payloadString;
+        //   console.log("attributeChangeVal", onOffStatus)
+        // });
         
     } else {
         // id yoksa alternatif bir işlem yap
@@ -63,9 +73,21 @@
 
   function ToogleCommand(){
    
-    device.command("0x0006", 0, "Toggle", (message:Message) => {
-      //onOffStatus = message.payloadString;
-      console.log("Gonderildi");
+    // device.command("0x0006", 0, "Toggle", (message:Message) => {
+    //   //onOffStatus = message.payloadString;
+    //   console.log("Gonderildi");
+    // });
+
+    // device.command("command3", (message:Message) => {
+    // //   //onOffStatus = message.payloadString;
+    // //   console.log("Gonderildi");
+    //  });
+    device.commandByCluster({
+            endpoint: 0,
+            clusterName: "ON/OFF",
+            commandName: "Toggle"
+    }, (message) => {
+
     });
   }
 

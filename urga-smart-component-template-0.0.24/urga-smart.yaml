@@ -1,0 +1,71 @@
+name: Bu bir test ui si
+packageName: ${packageJson.name}
+version: ${packageJson.version}
+shortDescription: A sample application
+files:
+   - dist
+
+#Bu tehlikeli o yuzden yetki gerektirir.
+usedServices:
+  - BluetoothService
+  - DeviceOrientationService
+
+#Bu cok tehlikeli o yuzden yuksek yetki gerektirir.
+controlServices:
+  - RelayService
+  - DeviceOrientationService
+
+indexPoints:
+  - path: "dist/index.html"
+    #bu opsiyonel
+    recommendDevices:
+      - "relayOne"
+    # Bu cihazlarla hangi sekilde iletisim kuracagini belirtiyor. 
+    # (CommonCommunication sistemini kullanarak) belki ilerde CommonOS, CommonLanguage, CommonCommunication gibi seyler olabilir. Yada URGA olur
+    # amac ortak bir iletisim yapisini kullanarak uyum saglamak
+
+    attributes:
+      - name: "status1"
+        description: "This is setting 1"
+      - name: "status2"
+        description: "This is setting 2"
+    commands:
+      - name: "command1"
+        description: "This is setting 1"
+      - name: "command2"
+        description: "This is setting 2"  
+    
+
+    # Settings ile cihaz hafizasinda ayar tutabiliyor.
+    settings:
+      - name: "setting1"
+        type: "string"
+        description: "This is setting 1 (string)"
+      - name: "setting2"
+        type: "number"
+        description: "This is setting 2 (number)"
+      - name: "setting3"
+        type: "boolean"
+        description: "This is setting 3 (boolean)"
+      - name: "setting4"
+        type: "checkbox"
+        options: 
+          - name: "Option 1"
+            value: "option1"
+          - name: "Option 2"
+            value: "option1"
+        description: "This is setting 4 (checkbox)"
+      - name: "setting5"
+        type: "radiobox"
+        options: 
+          - name: "Option 1"
+            value: "option1"
+          - name: "Option 2"
+            value: "option1"
+        description: "This is setting 5 (radiobox)"
+
+  - path: "dist/index2.html"
+    recommendDevices:
+      - "relayTwo"
+  
+   

@@ -1,10 +1,10 @@
-<script lang="ts">
+<!-- <script lang="ts">
     import svelteLogo from './assets/svelte.svg'
     import viteLogo from '/vite.svg'
     import Counter from './lib/Counter.svelte'
   
-    import { Cluster, Device } from "urgasmartlib";
-    import type { DeviceInfo, Message } from "urgasmartlib";
+    // import { Cluster, Device } from "urgasmartlib";
+    // import type { DeviceInfo, Message } from "urgasmartlib";
   
     import { onMount } from 'svelte';
     import Fa from 'svelte-fa';
@@ -172,7 +172,7 @@
     <p class="read-the-docs">
       Click on the Vite and Svelte logos to learn more
     </p>
-    -->
+   
   </main>
   
   <style>
@@ -224,4 +224,4 @@
       color: #888;
     }
   </style>
-  
+   -->

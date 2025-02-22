@@ -1,0 +1,115 @@
+packageName: generalTheme
+version: 0.0.7
+visualName: Bu bir test ui i
+shortDescription: A sample application
+files:
+   - dist
+
+#Bu tehlikeli o yuzden yetki gerektirir.
+usedServices:
+  - BluetoothService
+  - DeviceOrientationService
+
+#Bu cok tehlikeli o yuzden yuksek yetki gerektirir.
+controlServices:
+  - RelayService
+  - DeviceOrientationService
+
+indexPoints:
+  - path: "dist/index.html"
+    #bu opsiyonel
+    recommendDevices:
+      - "relayOne"
+    # Bu cihazlarla hangi sekilde iletisim kuracagini belirtiyor. 
+    # (CommonCommunication sistemini kullanarak) belki ilerde CommonOS, CommonLanguage, CommonCommunication gibi seyler olabilir. Yada URGA olur
+    # amac ortak bir iletisim yapisini kullanarak uyum saglamak
+    
+    # Cihazlar ile iletisim kurmak icin ya clusterslar kullanilacak ya da 
+    # Service ler kullanilacak. Service ler daha genel bir yapi olup,
+    # clusterslar daha spesifik ve ortak bir yapi olusturur. 
+    # Serviceleri kullanmak izin isterken clusterslar kullanmak izin istemez.
+    # Clusterslarin kullanilmasi daha kolaydir. Fakat Servisleri kullanmak daha fazla
+    # kontrol saglar. Istersek her ikisini de kullanabiliriz.
+
+  
+
+    # Matter Protocol For Common Comminication. 
+    clusters:
+      - - "ON/OFF" 
+        - "LEVEL"
+      - - "TOOGLE"
+        - customClusterName: "Deneme" # Bu hazir cluster isimlerinden farkli olmalidir.
+          description:
+          attributes:
+            - attributeName: "Status"
+              description:
+              possibleValues:
+                - "On"
+                - "OFF"
+          commands:
+          - commandName: "ON"
+            description:
+            parameters:
+          - commandName: "OFF"
+            description:
+            parameters:
+          - commandName: "TOOGLE"
+            description:
+            parameters:
+
+
+    # customAttributes:
+    #   - tag: "status1"
+    #     description: "This is setting 1"
+    #     possibleValues:
+    #       - "ON"
+    #       - "OFF"
+    #   - tag: "status2"
+    #     description: "This is setting 2"
+    #     possibleValues:
+    #       - "value1"
+    #       - "value2"
+    #       - "value3"
+    # customCommands:
+    #   - tag: "command1"
+    #     description: "This is ON command"
+    #   - tag: "command2"
+    #     description: "This is OFF command"
+    #   - tag: "command3"
+    #     description: "This is TOOGLE command"  
+    
+
+    # Settings ile cihaz hafizasinda ayar tutabiliyor.
+    
+    settings:
+      - name: "setting1"
+        type: "string"
+        description: "This is setting 1 (string)"
+      - name: "setting2"
+        type: "number"
+        description: "This is setting 2 (number)"
+      - name: "setting3"
+        type: "boolean"
+        description: "This is setting 3 (boolean)"
+      - name: "setting4"
+        type: "checkbox"
+        options: 
+          - name: "Option 1"
+            value: "option1"
+          - name: "Option 2"
+            value: "option1"
+        description: "This is setting 4 (checkbox)"
+      - name: "setting5"
+        type: "radiobox"
+        options: 
+          - name: "Option 1"
+            value: "option1"
+          - name: "Option 2"
+            value: "option1"
+        description: "This is setting 5 (radiobox)"
+
+  - path: "dist/index2.html"
+    recommendDevices:
+      - "relayTwo"
+  
+   
